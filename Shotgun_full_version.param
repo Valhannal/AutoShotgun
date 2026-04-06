@@ -1,0 +1,361 @@
+[State]
+Type=Enum
+Items=Global Enabled;Disabled
+Category=Options
+CategoryOrder=0
+CategoryIndex=0
+Label=State
+Default=Disabled
+Description=How this event plugin should respond to events. If Global, all jobs and Workers will trigger the events for this plugin. If Opt-In, jobs and Workers can choose to trigger the events for this plugin. If Disabled, no events are triggered for this plugin.
+
+[CreateVersionOnSubmission]
+Type=boolean
+Category=Options
+CategoryOrder=0
+CategoryIndex=1
+Label=Create Version on Submission
+Description=If enabled, will create the Shotgun Version at time of submission and update its status as the job progresses.  Otherwise, the Version will only be created once the Deadline Job completes.
+Required=true
+DisableIfBlank=false
+Default=true
+
+[EnableAdvancedWorkflow]
+Type=boolean
+Category=Options
+CategoryOrder=0
+CategoryIndex=2
+Label=Enable Advanced Workflow
+Description=If enabled, allows the user to select a Project and Entity instead of a Task
+Required=true
+DisableIfBlank=false
+Default=false
+
+[ThumbnailFrame]
+Type=enum
+Category=Options
+CategoryOrder=0
+CategoryIndex=3
+Label=Thumbnail Frame
+Description=The frame to upload to Shotgun as a Thumbnail
+Required=true
+DisableIfBlank=false
+Values=None;First Frame;Middle Frame;Last Frame
+Default=Middle Frame
+
+[EnableThumbnailConversion]
+Type=boolean
+Category=Options
+CategoryOrder=0
+CategoryIndex=4
+Label=Convert Thumbnails with Draft
+Description=Whether or not to convert the frames to a different format before uploading them to Shotgun (requires Draft).
+Required=true
+DisableIfBlank=false
+Default=false
+
+[ConvertedThumbnailFormat]
+Type=enum
+Category=Options
+CategoryOrder=0
+CategoryIndex=5
+Label=Thumbnail Conversion Format
+Description=The format to which Draft will convert the Thumbnail before uploading it.
+Required=true
+DisableIfBlank=false
+Values=JPG;PNG;TIF
+Default=JPG
+
+[ShotgunStatusList]
+Type=String
+Category=Options
+CategoryOrder=0
+CategoryIndex=6
+Label=Status List
+Description=Only Shotgun tasks that are in this list will be shown within the Deadline Shotgun UI.
+Required=true
+DisableIfBlank=false
+Default=ip,rdy
+
+[VersionNameTemplates]
+Type=MultiLineString
+Category=Options
+CategoryOrder=0
+CategoryIndex=7
+Label=Version Templates
+Description=Version Name Template presets. Available tokens include ${project}, ${shot}, ${task}, ${user}, ${jobname}, and ${jobid}
+Required=true
+DisableIfBlank=false
+Default=
+
+[FramePaddingCharacter]
+Type=string
+Category=Options
+CategoryOrder=0
+CategoryIndex=8
+Label=Frame Padding Character
+Description=Which character should be used for frame padding. Defaults to #, RV should use @. Python style frame padding, %0#d, is also accepted.
+Required=true
+DisableIfBlank=false
+Default=#
+
+[VerboseLogging]
+Type=boolean
+Category=Options
+CategoryOrder=0
+CategoryIndex=9
+Label=Enable Verbose Errors
+Description=Whether or not detailed (technical) error information should be displayed on submission.
+Required=true
+DisableIfBlank=false
+Default=false
+
+[ShotgunURL]
+Type=string
+Category=Connection Settings
+CategoryOrder=1
+CategoryIndex=0
+Label=Shotgun URL
+Description=Your Shotgun URL.
+Required=true
+DisableIfBlank=false
+Default=
+
+[ShotgunProxy]
+Type=string
+Category=Connection Settings
+CategoryOrder=1
+CategoryIndex=1
+Label=Shotgun Proxy
+Description=Your proxy (if you use one)
+Required=true
+DisableIfBlank=false
+Default=
+
+[ShotgunNoSslValidation]
+Type=boolean
+Category=Connection Settings
+CategoryOrder=1
+CategoryIndex=2
+Label=No SSL Validation
+Default=true
+Description=Set to True to disable SSL certificate validation
+
+[ShotgunScriptName]
+Type=string
+Category=Connection Settings
+CategoryOrder=1
+CategoryIndex=3
+Label=API Script Name
+Description=Your Shotgun script name.
+Required=true
+DisableIfBlank=false
+Default=
+
+[ShotgunScriptKey]
+Type=password
+Category=Connection Settings
+CategoryOrder=1
+CategoryIndex=4
+Label=API Application Key
+Description=Your Shotgun script key, which will look something like "bc29517b4928b8336e007ae48e71f082eb0e7c88".
+Required=true
+DisableIfBlank=false
+Default=y(p9pnzlozEgktyioocffkijg
+
+[VersionEntityTaskField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=0
+Label=Task Field
+Description=[Entity field] Link to the Task entity for this Version.
+Required=true
+DisableIfBlank=false
+Default=sg_task
+
+[VersionEntityFrameRangeField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=10
+Label=Frame Range Field
+Description=[Text field] Frame range for this Version. (e.g. "1-100")
+Required=true
+DisableIfBlank=false
+Default=frame_range
+
+[VersionEntityFrameCountField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=20
+Label=Frame Count Field
+Description=[Number field] Total number of frames rendered for this Version. (e.g. "100")
+Required=true
+DisableIfBlank=false
+Default=frame_count
+
+[VersionEntityFirstFrameField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=30
+Label=First Frame Field
+Description=[Number field] Lowest frame number rendered for this Version. (e.g. "1")
+Required=true
+DisableIfBlank=false
+Default=sg_first_frame
+
+[VersionEntityLastFrameField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=40
+Label=Last Frame Field
+Description=[Number field] Highest frame number rendered for this Version. (e.g. "100")
+Required=true
+DisableIfBlank=false
+Default=sg_last_frame
+
+[VersionEntityPathToFramesField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=50
+Label=Path To Frames Field
+Description=[Text field] Full local path to location of frames on disk. (e.g. "/path/to/frames.#.jpg")
+Required=true
+DisableIfBlank=false
+Default=sg_path_to_frames
+
+[VersionEntityPathToMovieField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=60
+Label=Path To Movie Field
+Description=[Text field] Full local path to location of proxy movie on disk. (e.g. "/path/to/movie.mov")
+Required=true
+DisableIfBlank=false
+Default=sg_path_to_movie
+
+[VersionEntityUploadMovieField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=70
+Label=Uploaded Movie Field
+Description=[File/Link field] Holds the uploaded proxy movie.
+Required=true
+DisableIfBlank=false
+Default=sg_uploaded_movie
+
+[VersionEntityStatusField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=80
+Label=Version Status Field
+Description=[Status List field] Status of the render job. (e.g. "rev")
+Required=true
+DisableIfBlank=false
+Default=sg_status_list
+
+[VersionEntityAverageTimeField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=90
+Label=Average Frame Time Field
+Description=[Number field] Average time taken to render each frame, in seconds. (e.g. "123")
+Required=true
+DisableIfBlank=false
+Default=
+
+[VersionEntityTotalTimeField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=100
+Label=Total Render Time Field
+Description=[Number field] Total time taken to render a job, in seconds. (e.g. "12345")
+Required=true
+DisableIfBlank=false
+Default=
+
+[VersionEntityJobIDField]
+Type=string
+Category=Shotgun Field Mappings
+CategoryOrder=2
+CategoryIndex=110
+Label=Deadline Job ID Field
+Description=[Text field] The JobID of the Deadline job that is associated with this Version. (e.g. 999_050_999_40455bae)
+Required=true
+DisableIfBlank=false
+Default=
+
+[VersionEntityStatusStarted]
+Type=string
+Category=Status Value Mappings
+CategoryOrder=3
+CategoryIndex=0
+Label=Started Status
+Description=The status code to set when the Deadline job starts.
+Required=true
+DisableIfBlank=false
+Default=na
+
+[VersionEntityStatusFinished]
+Type=string
+Category=Status Value Mappings
+CategoryOrder=3
+CategoryIndex=10
+Label=Finished Status
+Description=The status code to set when the Deadline job finishes.
+Required=true
+DisableIfBlank=false
+Default=rev
+
+[VersionEntityStatusQueued]
+Type=string
+Category=Status Value Mappings
+CategoryOrder=3
+CategoryIndex=20
+Label=Queued Status
+Description=The status code to set when the Deadline job is queued.
+Required=true
+DisableIfBlank=false
+Default=na
+
+[VersionEntityStatusFailed]
+Type=string
+Category=Status Value Mappings
+CategoryOrder=3
+CategoryIndex=30
+Label=Failed Status
+Description=The status code to set when the Deadline job fails.
+Required=true
+DisableIfBlank=false
+Default=na
+
+[DraftTemplateField]
+Type=string
+Category=Draft Field Mappings
+CategoryOrder=4
+CategoryIndex=0
+Label=Draft Template Field
+Description=The field code for the Draft Template.
+Required=true
+DisableIfBlank=false
+Default=sg_draft_template
+
+[ShotgunDraftTemplate]
+Type=filename
+Category=Shotgun Draft Template
+CategoryOrder=5
+CategoryIndex=0
+Label=Draft Template
+Description=The default Draft template to use with Shotgun.
+Required=false
+DisableIfBlank=false
+Default=

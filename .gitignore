@@ -1,0 +1,20 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Env / sekrety
+.env
+*.env
+
+# IDE / system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Lokalne backupy
+backups/
