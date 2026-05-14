@@ -147,7 +147,3 @@ For adaptation to other studios/pipelines, please contact the maintainers for fu
 - Version code uniqueness is checked only by code within target entity.
 - Task matching prefers step prefix comparison and may require pipeline naming consistency.
 
-
-## License
-
-Internal custom pipeline plugin (license not specified in repository).
